@@ -85,21 +85,40 @@ Reflex & Solve aims to solve this problem by providing an intelligent assistant 
 # 🏗️ Architecture
 
 ```mermaid
-graph TD
+graph LR
 
-Client[Client] --> FastAPI[FastAPI]
+A[Client / Frontend]
 
-FastAPI --> Auth[Authentication]
-FastAPI --> Companies[Companies]
-FastAPI --> Documents[Documents]
-FastAPI --> AIChat[AI Chat]
+B[FastAPI Backend]
 
-AIChat --> OpenAI[OpenAI API]
-AIChat --> Embeddings[Embeddings]
+C[Authentication]
 
-Embeddings --> PGVector[pgvector]
+D[Business Services]
 
-FastAPI --> PostgreSQL[PostgreSQL]
+E[Document Processing]
+
+F[OpenAI API]
+
+G[Embeddings]
+
+H[pgvector]
+
+I[(PostgreSQL)]
+
+A --> B
+
+B --> C
+B --> D
+B --> E
+
+D --> I
+E --> I
+
+E --> G
+G --> H
+
+D --> F
+E --> F
 ```
 
 ---
