@@ -87,20 +87,19 @@ Reflex & Solve busca resolver ese problema permitiendo:
 ```mermaid
 graph TD
 
-Cliente --> FastAPI
+Client[Client] --> FastAPI[FastAPI]
 
-FastAPI --> Autenticación
-FastAPI --> Empresas
-FastAPI --> Documentos
-FastAPI --> ChatIA
+FastAPI --> Auth[Authentication]
+FastAPI --> Companies[Companies]
+FastAPI --> Documents[Documents]
+FastAPI --> AIChat[AI Chat]
 
-ChatIA --> OpenAI
+AIChat --> OpenAI[OpenAI API]
+AIChat --> Embeddings[Embeddings]
 
-ChatIA --> Embeddings
+Embeddings --> PGVector[pgvector]
 
-Embeddings --> pgvector
-
-FastAPI --> PostgreSQL
+FastAPI --> PostgreSQL[PostgreSQL]
 ```
 
 ---

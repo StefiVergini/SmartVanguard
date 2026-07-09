@@ -87,19 +87,19 @@ Reflex & Solve aims to solve this problem by providing an intelligent assistant 
 ```mermaid
 graph TD
 
-Client --> FastAPI
+Client[Client] --> FastAPI[FastAPI]
 
-FastAPI --> Authentication
-FastAPI --> Companies
-FastAPI --> Documents
-FastAPI --> AI Chat
+FastAPI --> Auth[Authentication]
+FastAPI --> Companies[Companies]
+FastAPI --> Documents[Documents]
+FastAPI --> AIChat[AI Chat]
 
-AI Chat --> OpenAI API
-AI Chat --> Embeddings
+AIChat --> OpenAI[OpenAI API]
+AIChat --> Embeddings[Embeddings]
 
-Embeddings --> pgvector
+Embeddings --> PGVector[pgvector]
 
-FastAPI --> PostgreSQL
+FastAPI --> PostgreSQL[PostgreSQL]
 ```
 
 ---
