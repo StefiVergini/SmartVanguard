@@ -198,7 +198,7 @@ Topics currently being explored include:
 ## Clone repository
 
 ```bash
-git clone https://github.com/StefiVergini/reflex-and-solve.git
+git clone https://github.com/StefiVergini/SmartVanguard.git
 
 cd SmartVanguard
 ```
