@@ -1,16 +1,16 @@
 **Leer en otros idiomas:** [English](README.md)
 
-# 🤖 Reflex & Solve — Plataforma de inteligencia empresarial con IA
+# 🤖 SmartVanguard — Plataforma de inteligencia empresarial con IA
 
 > 🚧 **Proyecto en desarrollo**
 
-Reflex & Solve es una plataforma backend impulsada por Inteligencia Artificial cuyo objetivo es ayudar a las empresas a transformar datos en información útil mediante IA, procesamiento de documentos y Retrieval-Augmented Generation (RAG).
+SmartVanguard es una plataforma backend impulsada por Inteligencia Artificial cuyo objetivo es ayudar a las empresas a transformar datos en información útil mediante IA, procesamiento de documentos y Retrieval-Augmented Generation (RAG).
 
 ---
 
 # 💼 Sobre este proyecto
 
-Reflex & Solve representa mi principal proyecto personal y refleja mi transición desde el desarrollo Backend tradicional hacia Data & AI Engineering.
+SmartVanguard representa mi principal proyecto personal y refleja mi transición desde el desarrollo Backend tradicional hacia Data & AI Engineering.
 
 El objetivo es construir una plataforma capaz de comprender información empresarial, analizar documentos, procesar conjuntos de datos y asistir la toma de decisiones utilizando modelos de Inteligencia Artificial.
 
@@ -30,7 +30,7 @@ Actualmente el enfoque está puesto en construir un backend escalable mientras s
 
 Muchas empresas poseen información distribuida entre hojas de cálculo, PDFs y bases de datos, pero no cuentan con herramientas que permitan convertir esos datos en conocimiento.
 
-Reflex & Solve busca resolver ese problema permitiendo:
+SmartVanguard busca resolver ese problema permitiendo:
 
 - Comprender documentación empresarial
 - Responder preguntas utilizando IA
@@ -200,7 +200,7 @@ Actualmente estoy profundizando en:
 ```bash
 git clone https://github.com/StefiVergini/reflex-and-solve.git
 
-cd reflex-and-solve
+cd SmartVanguard
 ```
 
 ## Instalar dependencias

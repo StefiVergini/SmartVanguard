@@ -1,6 +1,6 @@
 **Read this in other languages:** [Español](README.es.md)
 
-# 🤖 Reflex & Solve — AI Business Intelligence Platform
+# 🤖 SmartVanguard — AI Business Intelligence Platform
 
 > 🚧 **Work in Progress**
 >
@@ -10,7 +10,7 @@
 
 # 💼 About This Project
 
-Reflex & Solve is my main personal project and represents my transition from traditional Backend Development into Data & AI Engineering.
+SmartVanguard is my main personal project and represents my transition from traditional Backend Development into Data & AI Engineering.
 
 The goal is to build an intelligent platform capable of understanding business information, processing documents, analyzing datasets and assisting decision-making through Large Language Models (LLMs).
 
@@ -30,7 +30,7 @@ Current development focuses on building a scalable backend while gradually integ
 
 Many companies own valuable information spread across spreadsheets, PDFs and databases but struggle to transform that data into useful knowledge.
 
-Reflex & Solve aims to solve this problem by providing an intelligent assistant capable of:
+SmartVanguard aims to solve this problem by providing an intelligent assistant capable of:
 
 - Understanding company documentation
 - Answering questions using AI
@@ -200,7 +200,7 @@ Topics currently being explored include:
 ```bash
 git clone https://github.com/StefiVergini/reflex-and-solve.git
 
-cd reflex-and-solve
+cd SmartVanguard
 ```
 
 ## Install dependencies
