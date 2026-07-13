@@ -1,4 +1,4 @@
-from models.company import Company
+from app.models.company import Company
 
 def get_prompt(company_id, query, context, db):
     company = db.query(Company).get(company_id)

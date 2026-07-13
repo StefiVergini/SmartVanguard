@@ -2,7 +2,7 @@ from passlib.context import CryptContext
 from jose import jwt
 from datetime import datetime, timedelta
 # Importamos las variables desde tu archivo de configuración
-from core.config import SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES
+from app.core.config import SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES
 
 # Configuración para el hasheo de contraseñas
 pwd_context = CryptContext(schemes=["bcrypt"])

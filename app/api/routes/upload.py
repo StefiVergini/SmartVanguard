@@ -1,9 +1,9 @@
 from fastapi import APIRouter, UploadFile, Depends
 from sqlalchemy.orm import Session
 import pandas as pd
-from services.ai import get_embedding
-from models.document import Document
-from api.deps import get_db, get_current_user
+from app.services.ai import get_embedding
+from app.models.document import Document
+from app.api.deps import get_db, get_current_user
 
 router = APIRouter()
 

@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from services.ai import get_embedding, chat_with_context
-from models.document import Document
-from api.deps import get_db, get_current_user
-from utils.prompts import get_prompt
+from app.services.ai import get_embedding, chat_with_context
+from app.models.document import Document
+from app.api.deps import get_db, get_current_user
+from app.utils.prompts import get_prompt
 
 router = APIRouter()
 

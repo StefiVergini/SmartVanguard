@@ -1,25 +1,25 @@
 from fastapi import FastAPI
-from db.session import engine
-from db.base import Base
 
-# IMPORTANTE: Debes importar tus modelos aquí para que 
-# SQLAlchemy los reconozca al crear las tablas.
-from models.user import User
-from models.company import Company
-from models.document import Document
+from app.api.routes import auth, chat, upload
 
-from api.routes import auth, upload, chat
+from app.db.init_db import init_db
 
-# Crea las tablas en la base de datos (si no existen)
-Base.metadata.create_all(bind=engine)
+init_db()
 
-app = FastAPI(title="Mi IA API")
+app = FastAPI(
+    title="SmartVanguard API",
+    description="Business Intelligence powered by AI",
+    version="1.0.0"
+)
 
 # Incluimos los routers con prefijos para mejor orden
 app.include_router(auth.router, prefix="/auth", tags=["Autenticación"])
 app.include_router(upload.router, prefix="/files", tags=["Archivos"])
 app.include_router(chat.router, prefix="/ai", tags=["Chat IA"])
 
-@app.get("/")
+@app.get("/", tags=["Health"])
 def health_check():
-    return {"status": "running"}
+    return {
+        "status": "running",
+        "service": "SmartVanguard API"
+    }
