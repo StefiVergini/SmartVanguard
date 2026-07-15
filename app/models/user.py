@@ -1,10 +1,14 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Boolean, func
 from app.db.base import Base
 
 class User(Base):
    __tablename__ = "users"
 
    id = Column(Integer, primary_key=True)
-   email = Column(String, unique=True)
-   password = Column(String)
+   email = Column(String(255), unique=True, nullable=False)
+   password_hash = Column(String, nullable=False)
    company_id = Column(Integer, ForeignKey("companies.id"))
+   full_name = Column(String(250))
+   role = Column(String(30), default="user")
+   created_at  = Column(DateTime, server_default=func.now())
+   is_active = Column(Boolean, default=True) 

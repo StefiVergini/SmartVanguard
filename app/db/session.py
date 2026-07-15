@@ -9,11 +9,11 @@ engine = create_engine(
 )
 
 SessionLocal = sessionmaker(
-    autocommit=False,
+    bind=engine,
     autoflush=False,
-    bind=engine
+    autocommit=False,
+    expire_on_commit=False
 )
-
 #para PRODUCCION DSP CAMBIAR
 #engine = create_engine(
 #    DATABASE_URL,

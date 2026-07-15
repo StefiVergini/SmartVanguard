@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
+from app.schemas.auth import RegisterRequest
 from app.api.deps import get_db
 from app.models.company import Company
 from app.models.user import User
@@ -10,14 +11,13 @@ router = APIRouter()
 
 
 @router.post("/register")
+@router.post("/register")
 def register(
-    email: str,
-    password: str,
-    company_name: str,
+    data: RegisterRequest,
     db: Session = Depends(get_db)
 ):
     company = Company(
-        name=company_name,
+        name=data.company_name,
         business_type="general"
     )
 
@@ -25,8 +25,8 @@ def register(
     db.flush()
 
     user = User(
-        email=email,
-        password=hash_password(password),
+        email=data.email,
+        password=hash_password(data.password),
         company_id=company.id
     )
 
