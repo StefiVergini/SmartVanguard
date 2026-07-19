@@ -1,11 +1,11 @@
 from app.db.base import Base
 from app.db.session import engine
-# importar los modelos  
-# SQLAlchemy los reconozca al crear las tablas.
+
 from app.db.base import Base
 from app.db.session import engine
 
 # Importa todos los modelos
+# SQLAlchemy los reconozca al crear las tablas.
 import app.models
 
 

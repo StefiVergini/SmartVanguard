@@ -2,7 +2,7 @@ from fastapi import APIRouter, UploadFile, Depends
 from sqlalchemy.orm import Session
 import pandas as pd
 from app.services.ai import get_embedding
-from app.models.document import Document
+from app.models.dataset import Dataset
 from app.api.deps import get_db, get_current_user
 
 router = APIRouter()
@@ -15,7 +15,7 @@ async def upload(file: UploadFile, db: Session = Depends(get_db), user=Depends(g
         content = " | ".join([str(v) for v in row.values])
         embedding = get_embedding(content)
 
-    doc = Document(
+    doc = Dataset(
     content=content,
     embedding=embedding,
     company_id=user.company_id

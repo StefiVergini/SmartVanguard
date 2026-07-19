@@ -8,9 +8,11 @@ from sqlalchemy import (
     func,
     String
 )
+from sqlalchemy.orm import relationship
 
 from app.db.base import Base
 
+#Telemetría de la IA
 
 class AIInsight(Base):
 
@@ -35,7 +37,10 @@ class AIInsight(Base):
         ForeignKey("chats.id"),
         nullable=False
     )
-
+    chat_message_id = Column(
+        Integer,
+        ForeignKey("chat_messages.id")
+    )
     question = Column(Text, nullable=False)
 
     answer = Column(Text, nullable=False)
@@ -47,8 +52,31 @@ class AIInsight(Base):
     model_used = Column(String(100))
 
     cost = Column(Float)
+    status = Column(
+        String(30),
+        default="completed"
+    ) #processing, completed, failed, cancelled
+   
+    provider = Column(String(50))
 
     created_at = Column(
         DateTime,
         server_default=func.now()
+    )
+
+    company = relationship(
+        "Company",
+        back_populates= "ai_insights"
+    )
+    user = relationship(
+        "User",
+        back_populates="ai_insights"
+    )
+    chat = relationship(
+        "Chat",
+        back_populates="ai_insights"
+    )
+    chat_message = relationship(
+        "ChatMessage",
+        back_populates="ai_insight"
     )
