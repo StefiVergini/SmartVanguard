@@ -39,11 +39,9 @@ class AIInsight(Base):
     )
     chat_message_id = Column(
         Integer,
-        ForeignKey("chat_messages.id")
+        ForeignKey("chat_messages.id"),
+        unique=True
     )
-    question = Column(Text, nullable=False)
-
-    answer = Column(Text, nullable=False)
 
     tokens_used = Column(Integer)
 

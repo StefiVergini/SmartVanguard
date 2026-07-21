@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Float, func
+from sqlalchemy import Index
 from sqlalchemy.orm import relationship
 from app.db.base import Base
 
@@ -7,13 +8,14 @@ class Dataset(Base):
 
     id = Column(Integer, primary_key=True)
     company_id = Column(Integer, ForeignKey("companies.id"), nullable=False)
-    uploaded_by = Column(Integer, ForeignKey("users.id"), nullable=False)
+    uploaded_by_user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     filename = Column(String)
     file_type = Column(String)
     rows_count = Column(Integer)
     columns_count = Column(Integer)
     status = Column(String(30), default="processing")
     created_at  = Column(DateTime, server_default=func.now())
+    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
     size_mb = Column(Float)
     dataset_type = Column(String(50))
     company = relationship(
@@ -27,9 +29,11 @@ class Dataset(Base):
     rows = relationship(
     "DatasetRow",
     back_populates="dataset",
-    cascade="all, delete-orphan"
+    cascade="all, delete-orphan",
+    lazy="selectin"
     )
 
+Index("idx_dataset_company", Dataset.company_id)
 #file_type si es csv, txt, etc
 #dataset_type: tipos de datos que contiene el archivo como
 #    sales

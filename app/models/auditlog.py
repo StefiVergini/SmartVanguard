@@ -44,6 +44,8 @@ class AuditLog(Base):
 
     metadata = Column(JSON)
 
+    status = Column(String(30)) #SUCCESS FAILED WARNING
+
     created_at = Column(
         DateTime,
         server_default=func.now()

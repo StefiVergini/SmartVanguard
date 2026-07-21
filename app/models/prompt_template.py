@@ -12,7 +12,9 @@ class PromptTemplate(Base):
     business_type = Column(String)
     system_prompt = Column(Text)
     is_default = Column(Boolean, default=False)
+    version = Column(Integer, default=1)
     created_at = Column(DateTime, server_default=func.now())
+    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
 
     company = relationship(
         "Company",

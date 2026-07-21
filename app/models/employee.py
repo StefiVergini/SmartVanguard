@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Boolean, DateTime
+from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, func
+from sqlalchemy import Index
 from sqlalchemy.orm import relationship
 from app.db.base import Base
 
@@ -15,7 +16,10 @@ class Employee(Base):
     termination_date = Column(DateTime)
     email = Column(String(255), unique=True, nullable=False)
     phone = Column(String(30))
+    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
     company = relationship(
         "Company",
         back_populates="employees"
     )
+
+Index("idx_employee_company", Employee.company_id)

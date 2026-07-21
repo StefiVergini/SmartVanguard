@@ -12,6 +12,7 @@ class User(Base):
    full_name = Column(String(250))
    role = Column(String(30), default="user")
    created_at  = Column(DateTime, server_default=func.now())
+   updated_at = Column(DateTime, server_default=func.now(),onupdate=func.now())
    is_active = Column(Boolean, default=True) 
 
    company = relationship(
@@ -20,18 +21,22 @@ class User(Base):
    )
    uploaded_datasets = relationship(
     "Dataset",
-    back_populates="uploaded_by_user"
+    back_populates="uploaded_by_user",
+    lazy="selectin"
    )
 
    chats = relationship(
     "Chat",
-    back_populates="user"
+    back_populates="user",
+    lazy="selectin"
    )
    ai_insights = relationship(
     "AIInsight",
-    back_populates="user"
+    back_populates="user",
+    lazy="selectin"
    )
    audit_logs = relationship(
     "AuditLog",
-    back_populates="user"
+    back_populates="user",
+    lazy="selectin"
    )

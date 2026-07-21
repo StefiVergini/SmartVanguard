@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, func
+from sqlalchemy import Index
 from sqlalchemy.orm import relationship
 from pgvector.sqlalchemy import Vector 
 from app.db.base import Base
@@ -17,3 +18,5 @@ class Embedding(Base):
     "DatasetRow",
     back_populates="embedding"
     )
+
+Index("idx_embedding_dataset_row", Embedding.dataset_row_id)

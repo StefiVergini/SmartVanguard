@@ -25,35 +25,44 @@ class Company(Base):
 
     max_datasets = Column(Integer, default=20)
 
+    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
+
     users = relationship(
         "User",
-        back_populates="company"
+        back_populates="company",
+        lazy="selectin"
     )
 
     datasets = relationship(
         "Dataset",
-        back_populates="company"
+        back_populates="company",
+        lazy="selectin"
     )
 
     employees = relationship(
         "Employee",
-        back_populates="company"
+        back_populates="company",
+        lazy="selectin"
     )
 
     chats = relationship(
         "Chat",
-        back_populates="company"
+        back_populates="company",
+        lazy="selectin"
     )
 
     ai_insights = relationship(
         "AIInsight",
-        back_populates="company"
+        back_populates="company",
+        lazy="selectin"
     )
     audit_logs = relationship(
         "AuditLog",
-        back_populates="company"
+        back_populates="company",
+        lazy="selectin"
     )
     prompt_templates = relationship(
         "PromptTemplate",
-        back_populates="company"
+        back_populates="company",
+        lazy="selectin"
     )
