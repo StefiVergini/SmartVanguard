@@ -1,8 +1,10 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Boolean, func
+from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from app.db.base import Base
+from timestamp_mixin import TimestampMixin
+from base_mixins import SoftDeleteMixin
 
-class User(Base):
+class User(TimestampMixin, SoftDeleteMixin, Base):
    __tablename__ = "users"
 
    id = Column(Integer, primary_key=True)
@@ -11,9 +13,6 @@ class User(Base):
    company_id = Column(Integer, ForeignKey("companies.id"), nullable=False)
    full_name = Column(String(250))
    role = Column(String(30), default="user")
-   created_at  = Column(DateTime, server_default=func.now())
-   updated_at = Column(DateTime, server_default=func.now(),onupdate=func.now())
-   is_active = Column(Boolean, default=True) 
 
    company = relationship(
     "Company",

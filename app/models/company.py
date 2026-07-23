@@ -1,10 +1,12 @@
-from sqlalchemy import Column, Integer, String, DateTime, Boolean, Float, func
+from sqlalchemy import Column, Integer, String, Float
 from sqlalchemy.orm import relationship
 
 from app.db.base import Base
+from timestamp_mixin import TimestampMixin
+from base_mixins import SoftDeleteMixin
 
 
-class Company(Base):
+class Company(TimestampMixin, SoftDeleteMixin, Base):
     __tablename__ = "companies"
 
     id = Column(Integer, primary_key=True, index=True)
@@ -13,10 +15,6 @@ class Company(Base):
 
     business_type = Column(String(50), nullable=False)
 
-    created_at = Column(DateTime, server_default=func.now())
-
-    is_active = Column(Boolean, default=True)
-
     plan = Column(String(30), nullable=False, default="starter")
 
     max_users = Column(Integer, default=5)
@@ -24,8 +22,6 @@ class Company(Base):
     max_storage = Column(Float, default=2.0)
 
     max_datasets = Column(Integer, default=20)
-
-    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
 
     users = relationship(
         "User",

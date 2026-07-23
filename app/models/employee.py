@@ -1,9 +1,11 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, func
+from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 from sqlalchemy import Index
 from sqlalchemy.orm import relationship
 from app.db.base import Base
+from timestamp_mixin import TimestampMixin
+from base_mixins import SoftDeleteMixin
 
-class Employee(Base):
+class Employee(TimestampMixin, SoftDeleteMixin, Base):
     __tablename__ = "employees"
     id = Column(Integer, primary_key=True)
     company_id = Column(Integer, ForeignKey("companies.id"), nullable=False)
@@ -16,7 +18,7 @@ class Employee(Base):
     termination_date = Column(DateTime)
     email = Column(String(255), unique=True, nullable=False)
     phone = Column(String(30))
-    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
+
     company = relationship(
         "Company",
         back_populates="employees"

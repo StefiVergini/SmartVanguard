@@ -1,9 +1,11 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Float, func
+from sqlalchemy import Column, Integer, String, ForeignKey, Float
 from sqlalchemy import Index
 from sqlalchemy.orm import relationship
 from app.db.base import Base
+from base_mixins import SoftDeleteMixin
+from timestamp_mixin import TimestampMixin
 
-class Dataset(Base):
+class Dataset(SoftDeleteMixin, TimestampMixin, Base):
     __tablename__ = "datasets"
 
     id = Column(Integer, primary_key=True)
@@ -14,10 +16,9 @@ class Dataset(Base):
     rows_count = Column(Integer)
     columns_count = Column(Integer)
     status = Column(String(30), default="processing")
-    created_at  = Column(DateTime, server_default=func.now())
-    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
     size_mb = Column(Float)
     dataset_type = Column(String(50))
+    
     company = relationship(
     "Company",
     back_populates="datasets"

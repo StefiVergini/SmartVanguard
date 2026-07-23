@@ -3,8 +3,6 @@ from sqlalchemy import (
     Integer,
     String,
     ForeignKey,
-    DateTime,
-    func,
     Text,
     JSON
 )
@@ -12,9 +10,10 @@ from sqlalchemy import Index
 from sqlalchemy.orm import relationship
 
 from app.db.base import Base
+from timestamp_mixin import TimestampMixin
 
 
-class AuditLog(Base):
+class AuditLog(TimestampMixin, Base):
 
     __tablename__ = "audit_logs"
 
@@ -45,11 +44,6 @@ class AuditLog(Base):
     metadata = Column(JSON)
 
     status = Column(String(30)) #SUCCESS FAILED WARNING
-
-    created_at = Column(
-        DateTime,
-        server_default=func.now()
-    )
 
     company = relationship(
         "Company",

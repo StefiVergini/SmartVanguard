@@ -1,17 +1,21 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, func
+from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, func, Boolean
 from sqlalchemy import Index
 from sqlalchemy.orm import relationship
 from app.db.base import Base
+from base_mixins import SoftDeleteMixin
+from timestamp_mixin import TimestampMixin
 
-class Chat(Base):
+class Chat(SoftDeleteMixin, TimestampMixin, Base):
     __tablename__ = "chats"
     id = Column(Integer, primary_key = True)
     company_id = Column(Integer, ForeignKey("companies.id"), nullable=False)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     title = Column(String)
-    created_at = Column(DateTime, server_default=func.now())
     last_message_at = Column(DateTime, server_default=func.now())
-    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
+    is_deleted = Column(Boolean, default=False)
+    deleted_at = Column(DateTime)
+    deleted_by = Column(Integer, ForeignKey("users.id"))
+
     company = relationship(
         "Company",
         back_populates="chats"

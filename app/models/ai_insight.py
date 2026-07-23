@@ -1,7 +1,6 @@
 from sqlalchemy import (
     Column,
     Integer,
-    Text,
     Float,
     DateTime,
     ForeignKey,
@@ -11,10 +10,11 @@ from sqlalchemy import (
 from sqlalchemy.orm import relationship
 
 from app.db.base import Base
+from timestamp_mixin import TimestampMixin
 
 #Telemetría de la IA
 
-class AIInsight(Base):
+class AIInsight(TimestampMixin, Base):
 
     __tablename__ = "ai_insights"
 
@@ -56,11 +56,6 @@ class AIInsight(Base):
     ) #processing, completed, failed, cancelled
    
     provider = Column(String(50))
-
-    created_at = Column(
-        DateTime,
-        server_default=func.now()
-    )
 
     company = relationship(
         "Company",
