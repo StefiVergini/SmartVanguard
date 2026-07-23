@@ -1,6 +1,6 @@
 **Leer en otros idiomas:** [English](README.md)
 
-# 🤖 SmartVanguard — Plataforma de inteligencia empresarial con IA
+# 🤖 SmartVanguard - Plataforma de inteligencia empresarial con IA
 
 > 🚧 **Proyecto en desarrollo**
 
