@@ -1,6 +1,6 @@
 **Read this in other languages:** [Español](README.es.md)
 
-# 🤖 SmartVanguard — AI Business Intelligence Platform
+# 🤖 SmartVanguard - AI Business Intelligence Platform
 
 > 🚧 **Work in Progress**
 >
